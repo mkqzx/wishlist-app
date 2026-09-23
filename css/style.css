@@ -90,7 +90,7 @@ body {
 }
 
 .wish-card--bought .wish-card__name {
-  text-decoration: line-through
+  text-decoration: line-through;
 }
 
 .total-amount {
