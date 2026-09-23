@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Список бажань</title>
   <link rel="stylesheet" href="css/style.css">
-</head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></head>
 <body>
   <header class="page-header">
     <h1 class="page-title">Список бажань</h1>
   </header>
 
-  <main>
+  <main class="index-main">
     <section class="add-new-wish"> 
       <h2 class="section-title">Створити нове бажання</h2>
       <form action="#" class="wish-form">
@@ -34,6 +36,7 @@
           class="wish-form__input"
           placeholder="Введіть ціну бажання"
           inputmode="decimal" 
+          step="0.01"
           required>
         </div>
         <div class="wish-form__field">
@@ -80,13 +83,13 @@
       <h2 class="section-title">Мої бажання</h2>
       <div class="wish-grid">
         <article class="wish-card">
-          <img src="#" alt="Фото бажання" class="wish-card__img">
+          <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
           <h3 class="wish-card__name">Бажання 1</h3>
           <p class="wish-card__priority">1</p>
           <p class="wish-card__price">1000 грн</p>
         </article>
-        <article class="wish-card">
-          <img src="#" alt="Фото бажання" class="wish-card__img">
+        <article class="wish-card wish-card--bought">
+          <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
           <h3 class="wish-card__name">Бажання 2</h3>
           <p class="wish-card__priority">3</p>
           <p class="wish-card__price">20 грн</p>

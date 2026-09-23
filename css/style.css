@@ -1,0 +1,118 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a, button {
+  all: unset;
+  cursor: pointer;
+}
+
+:root {
+  --bg-color: #faf1eb;
+  --main-color: #D5A19A;
+  --card-color: white;
+  --border-color: #f0d7c7;
+}
+
+body {
+  font-family: "Brygada 1918", serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #000;
+  background: var(--bg-color); 
+}
+
+.page-header {
+  padding: 14px;
+  background: var(--main-color);
+  border-radius: 0 0 10px 10px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+}
+
+.index-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 14px 0 14px;
+}
+
+.index-main section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-bottom: 8px;
+}
+
+.wish-form__input:focus {
+  outline: none;
+  border: 2px solid var(--main-color);
+  border-radius: 2px;
+}
+
+.add-new-wish {
+  margin-top: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.wish-form__submit {
+  background: var(--main-color);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.wish-card {
+  background: var(--card-color);
+  padding: 14px;
+  width: 200px;
+  height: 300px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.wish-card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 10px 10px 10px 10px;  
+}
+
+.wish-card--bought {
+  opacity: 0.6;
+}
+
+.wish-card--bought .wish-card__name {
+  text-decoration: line-through
+}
+
+.total-amount {
+  font-size: 1.8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px;
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.page-footer {
+  font-size: 0.9rem;
+  color: #252525;
+  background-color: var(--main-color);
+  border-radius: 10px 10px 0 0;
+  padding: 14px;
+}
+
+.footer-social__icon {
+  width: 24px;
+  height: 24px;
+}
