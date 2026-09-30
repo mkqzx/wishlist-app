@@ -22,31 +22,60 @@ body {
   line-height: 1.4;
   color: #000;
   background: var(--bg-color); 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .page-header {
   padding: 14px;
   background: var(--main-color);
   border-radius: 0 0 10px 10px;
+  line-height: 1;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  row-gap: 8px;
+}
+
+.logo-header {
+  height: 2.2rem;
+  align-self: center;
 }
 
 .page-title {
   font-size: 2.2rem;
 }
 
-.index-main {
-  max-width: 1200px;
-  margin: 0 auto;
+.main-aside-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 0 14px 0 14px;
+  margin: 20px 0;
+  flex-grow: 1;
 }
 
-.index-main section {
-  margin-bottom: 20px;
+.index-main {
+  margin: 0 auto;
 }
 
 .section-title {
   margin-bottom: 8px;
 }
+
+.wish-form__field {
+  margin-bottom: 4px;
+}
+
+.wish-form__fieldset {
+  margin-bottom: 8px;
+  border: none;
+}
+
+/* .wish-form__radio {
+  all: unset;
+} */
 
 .wish-form__input:focus {
   outline: none;
@@ -55,10 +84,10 @@ body {
 }
 
 .add-new-wish {
-  margin-top: 20px;
   border: 1px solid var(--main-color);
   border-radius: 10px;
   padding: 14px;
+  margin-bottom: 20px;
 }
 
 .wish-form__submit {
@@ -68,22 +97,41 @@ body {
   font-size: 1.2rem;
 }
 
+.wish-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
 .wish-card {
   background: var(--card-color);
   padding: 14px;
-  width: 200px;
-  height: 300px;
-  margin-bottom: 10px;
+  max-width: 350px;
+  /* height: 300px; */
+  /* margin-bottom: 10px; */
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .wish-card img {
-  width: 100%;
-  height: 60%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
-  border-radius: 10px 10px 10px 10px;  
+  border-radius: 4px;  
 }
+
+.wish-card__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.wish-card__price::after, .total-amount__num::after {
+  content: " грн";
+} 
 
 .wish-card--bought {
   opacity: 0.6;
@@ -94,14 +142,20 @@ body {
 }
 
 .total-amount {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 14px;
   background-color: var(--card-color);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  margin-bottom: 20px;
+}
+
+.total-amount__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
 }
 
 .page-footer {
@@ -112,7 +166,51 @@ body {
   padding: 14px;
 }
 
+.footer-social__title {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.footer-social__wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
 .footer-social__icon {
-  width: 24px;
-  height: 24px;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (min-width: 600px) {
+  .wish-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-aside-wrapper {
+    max-width: 1200px;
+    margin: 24px auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-right: 14px;
+    gap: 24px;
+  }
+
+  .index-main {
+    padding-right: 0;
+  }
+
+  .wish-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 12px;
+  }
+
+  .total-amount {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    /* min-height: calc(100vh - (48px)); */
+  }
 }

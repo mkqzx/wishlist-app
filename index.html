@@ -10,98 +10,147 @@
   <link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"></head>
 <body>
   <header class="page-header">
+    <img src="assets/img/wippy-logo.svg" alt="logo" class="logo-header">
     <h1 class="page-title">Список бажань</h1>
   </header>
 
-  <main class="index-main">
-    <section class="add-new-wish"> 
-      <h2 class="section-title">Створити нове бажання</h2>
-      <form action="#" class="wish-form">
-        <div class="wish-form__field">
-          <label for="wish-name" class="wish-form__label">Назва</label>
-          <input 
-          type="text" 
-          id="wish-name" 
-          name="wish-name" 
-          class="wish-form__input"
-          placeholder="Введіть назву бажання" 
-          required>
-        </div>
-        <div class="wish-form__field">
-          <label for="wish-price" class="wish-form__label">Ціна</label>
-          <input 
-          type="number" 
-          id="wish-price" 
-          name="wish-price" 
-          class="wish-form__input"
-          placeholder="Введіть ціну бажання"
-          inputmode="decimal" 
-          step="0.01"
-          required>
-        </div>
-        <div class="wish-form__field">
-          <label for="wish-img" class="wish-form__label">Зображення</label>
-          <input 
-          type="file" 
-          id="wish-img" 
-          name="wish-img" 
-          class="wish-form__input">
-        </div>
-        <fieldset class="wish-form__fieldset">
-          <legend class="wish-form__legend">Пріоритет</legend>
-          <div class="wish-form__radio-group">
+  <div class="main-aside-wrapper">
+    <main class="index-main">
+      <section class="add-new-wish"> 
+        <h2 class="section-title">Створити нове бажання</h2>
+        <form action="#" class="wish-form">
+          <div class="wish-form__field">
+            <label for="wish-name" class="wish-form__label">Назва</label>
             <input 
-            type="radio" 
-            id="wish-first-priority" 
-            name="wish-priority" 
-            value="1"
-            class="wish-form__radio">
-            <label for="wish-first-priority" class="wish-form__radio-label">1</label>
-
-            <input 
-            type="radio" 
-            id="wish-second-priority" 
-            name="wish-priority" 
-            value="2"
-            class="wish-form__radio">
-            <label for="wish-second-priority" class="wish-form__radio-label">2</label>
-
-            <input 
-            type="radio" 
-            id="wish-third-priority" 
-            name="wish-priority" 
-            value="3"
-            class="wish-form__radio">
-            <label for="wish-third-priority" class="wish-form__radio-label">3</label>
+            type="text" 
+            id="wish-name" 
+            name="wish-name" 
+            class="wish-form__input"
+            placeholder="Введіть назву бажання" 
+            required>
           </div>
-        </fieldset>
-        <button type="submit" class="wish-form__submit">Додати</button>
-      </form>
-    </section>
+          <div class="wish-form__field">
+            <label for="wish-price" class="wish-form__label">Ціна</label>
+            <input 
+            type="number" 
+            id="wish-price" 
+            name="wish-price" 
+            class="wish-form__input"
+            placeholder="Введіть ціну бажання"
+            inputmode="decimal" 
+            step="0.01"
+            required>
+          </div>
+          <div class="wish-form__field">
+            <label for="wish-img" class="wish-form__label">Зображення</label>
+            <input 
+            type="file" 
+            id="wish-img" 
+            name="wish-img" 
+            class="wish-form__input">
+          </div>
+          <fieldset class="wish-form__fieldset">
+            <legend class="wish-form__legend">Пріоритет</legend>
+            <div class="wish-form__radio-group">
+              <input 
+              type="radio" 
+              id="wish-first-priority" 
+              name="wish-priority" 
+              value="1"
+              class="wish-form__radio">
+              <label for="wish-first-priority" class="wish-form__radio-label">1</label>
 
-    <section class="my-wishes">
-      <h2 class="section-title">Мої бажання</h2>
-      <div class="wish-grid">
-        <article class="wish-card">
-          <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-          <h3 class="wish-card__name">Бажання 1</h3>
-          <p class="wish-card__priority">1</p>
-          <p class="wish-card__price">1000 грн</p>
-        </article>
-        <article class="wish-card wish-card--bought">
-          <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-          <h3 class="wish-card__name">Бажання 2</h3>
-          <p class="wish-card__priority">3</p>
-          <p class="wish-card__price">20 грн</p>
-        </article>
-      </div>
-    </section>
-  </main>
+              <input 
+              type="radio" 
+              id="wish-second-priority" 
+              name="wish-priority" 
+              value="2"
+              class="wish-form__radio">
+              <label for="wish-second-priority" class="wish-form__radio-label">2</label>
 
-  <aside class="total-amount">
-    <p class="total-amount__title">Підсумок</p>
-    <p class="total-amount__text">Загальна сума: <span>1020</span> грн</p>
-  </aside>
+              <input 
+              type="radio" 
+              id="wish-third-priority" 
+              name="wish-priority" 
+              value="3"
+              class="wish-form__radio">
+              <label for="wish-third-priority" class="wish-form__radio-label">3</label>
+            </div>
+          </fieldset>
+          <button type="submit" class="wish-form__submit">Додати</button>
+        </form>
+      </section>
+
+      <section class="my-wishes">
+        <h2 class="section-title">Мої бажання</h2>
+        <div class="wish-grid">
+          <article class="wish-card">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+              <div class="wish-card__content">
+                <h3 class="wish-card__name">Бажання 1</h3>
+                <p class="wish-card__priority">1</p>
+                <p class="wish-card__price">1000</p>
+              </div>
+          </article>
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+          <article class="wish-card wish-card--bought">
+            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <div class="wish-card__content">
+              <h3 class="wish-card__name">Бажання 2</h3>
+              <p class="wish-card__priority">3</p>
+              <p class="wish-card__price">20</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <aside class="total-amount">
+      <p class="total-amount__title">Підсумок</p>
+      <p class="total-amount__text">Загальна сума: <span class="total-amount__num">1020</span></p>
+    </aside>
+  </div>
 
   <footer class="page-footer">
     <div class="footer-social">
