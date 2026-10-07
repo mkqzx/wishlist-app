@@ -9,11 +9,22 @@ a, button {
   cursor: pointer;
 }
 
+h1, h2 {
+  line-height: 1.1;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 :root {
-  --bg-color: #faf1eb;
-  --main-color: #D5A19A;
-  --card-color: white;
-  --border-color: #f0d7c7;
+  --bg-color: #fdfaf8; 
+  --accent-color: #e8a598;
+  --card-bg: #fff;
+  --primary-color: #faefe9; 
+  --secondary-color: #ebd1c8;
 }
 
 body {
@@ -29,22 +40,27 @@ body {
 
 .page-header {
   padding: 14px;
-  background: var(--main-color);
+  background: transparent;
   border-radius: 0 0 10px 10px;
   line-height: 1;
   display: flex;
   flex-wrap: wrap;
   column-gap: 14px;
   row-gap: 8px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid var(--accent-color);
+  border-top: 5px solid var(--accent-color);
 }
 
 .logo-header {
-  height: 2.2rem;
+  height: 2.1rem;
   align-self: center;
 }
 
 .page-title {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
 }
 
 .main-aside-wrapper {
@@ -62,10 +78,27 @@ body {
 
 .section-title {
   margin-bottom: 8px;
+  font-size: 1.7rem;
 }
 
+/* Обґрунтування нечіткої вимоги: Для забезпечення «приємного процесу» використання форми, 
+стандартні системні елементи були повністю стилізовані під мʼяку палітру проєкту. 
+Інпути отримали комфортні відступи, нудні радіокнопки замінено на візуальні зірочки, 
+а стандартна кнопка завантаження файлу перероблена під загальний стиль. 
+Плавні hover-анімації та зміна кольору рамок при фокусі роблять взаємодію з інтерфейсом живою 
+та сучасною. Ховер-стан головної кнопки з інверсією кольорів 
+(перехід до білого фону з акцентною рамкою) обрано для того, щоб створити чіткий 
+і стильний візуальний відгук на дію користувача, роблячи цільову дію відчутною, 
+але зберігаючи загальну візуальну легкість інтерфейсу. */
+
 .wish-form__field {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wish-form__label {
+  margin-bottom: 3px;
 }
 
 .wish-form__fieldset {
@@ -73,28 +106,106 @@ body {
   border: none;
 }
 
-/* .wish-form__radio {
+.wish-form__legend {
+  margin-bottom: 3px;
+}
+
+.wish-form__radio {
   all: unset;
-} */
+}
+
+.wish-form__radio:checked + .wish-form__radio-label {
+  opacity: 100%;
+  font-weight: bold;
+}
+
+.wish-form__radio-label {
+  display: flex;
+  gap: 4px;
+  opacity: 60%;
+  margin-bottom: 2px;
+}
+
+.wish-form__radio-label svg {
+  align-self: center;
+}
+
+.wish-form__input { 
+  background: var(--card-bg);
+  border: 2px solid var(--secondary-color);
+  border-radius: 4px;
+  padding: 2px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.wish-form__input-img {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #272727;
+}
+
+.wish-form__input-img::file-selector-button {
+  background-color: #ffffff; 
+  color: #757575; 
+  font-family: inherit; 
+  font-size: 0.9rem;
+  border: 2px solid var(--secondary-color); 
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.wish-form__input-img::file-selector-button:hover {
+  border-color: var(--accent-color);
+}
 
 .wish-form__input:focus {
   outline: none;
-  border: 2px solid var(--main-color);
-  border-radius: 2px;
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
 }
 
 .add-new-wish {
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--accent-color);
   border-radius: 10px;
   padding: 14px;
   margin-bottom: 20px;
+  background-color: var(--primary-color);
+  line-height: 1.1;
 }
 
 .wish-form__submit {
-  background: var(--main-color);
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 1.2rem;
+  background: var(--accent-color);
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-size: 1.35rem;
+  display: flex;
+  gap: 2px;
+  line-height: 1;
+  border: 2px solid var(--accent-color);
+}
+
+.wish-form__submit p {
+  align-self: center;
+  padding-bottom: 2px;
+}
+
+.wish-form__submit svg {
+  align-self: center;
+}
+
+.wish-form__submit, .wish-form__submit svg, .wish-form__input-img::file-selector-button, .wish-form__input {
+  transition: all 0.3s ease;
+}
+
+.wish-form__submit:hover {
+  background-color: white;
+  border: 2px solid var(--accent-color);
+}
+
+.wish-form__submit:hover svg {
+  color: var(--accent-color);
 }
 
 .wish-grid {
@@ -105,16 +216,43 @@ body {
 }
 
 .wish-card {
-  background: var(--card-color);
+  background: var(--card-bg);
   padding: 14px;
   max-width: 350px;
-  /* height: 300px; */
-  /* margin-bottom: 10px; */
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--secondary-color);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
+}
+
+.wish-card--high::before , .wish-card--middle::before , .wish-card--low::before {
+  position: absolute;
+  z-index: 2;
+  right: 0px;
+  top: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 4px 20px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wish-card--high::before {
+  content: "Високий";
+  background: #f4b9b9;
+}
+
+.wish-card--middle::before {
+  content: "Середній";
+  background: #f7d7aa;
+}
+
+.wish-card--low::before {
+  content: "Низький";
+  background-color: rgb(188, 223, 195);
 }
 
 .wish-card img {
@@ -127,6 +265,16 @@ body {
 .wish-card__content {
   display: flex;
   flex-direction: column;
+}
+
+.wish-card__name {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.wish-card__price {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .wish-card__price::after, .total-amount__num::after {
@@ -142,28 +290,40 @@ body {
 }
 
 .total-amount {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 14px;
-  background-color: var(--card-color);
-  border: 1px solid var(--border-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--accent-color);
   border-radius: 10px;
+  line-height: 1.1;
 }
 
 .total-amount__title {
   text-align: center;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  margin-bottom: 4px;
+}
+
+.total-amount__num {
+  font-size: 1.4rem;
 }
 
 .page-footer {
   font-size: 0.9rem;
   color: #252525;
-  background-color: var(--main-color);
+  background-color: var(--accent-color);
   border-radius: 10px 10px 0 0;
   padding: 14px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid var(--accent-color);
+  border-top: 5px solid var(--accent-color);
+  background: transparent;
 }
 
 .footer-social__title {
@@ -190,7 +350,7 @@ body {
 
 @media (min-width: 1024px) {
   .main-aside-wrapper {
-    max-width: 1200px;
+    max-width: calc(1200px + 14px + 14px);
     margin: 24px auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
