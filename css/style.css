@@ -74,6 +74,7 @@ body {
 
 .index-main {
   margin: 0 auto;
+  min-width: 100%;
 }
 
 .section-title {
