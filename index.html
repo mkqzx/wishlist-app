@@ -19,14 +19,14 @@
   <div class="main-aside-wrapper">
     <main class="index-main">
       <section class="add-new-wish"> 
-        <h2 class="section-title">Створити нове бажання</h2>
-        <form action="#" class="wish-form">
+        <h2 class="section-title" ff>Створити нове бажання</h2>
+        <form action="#" class="wish-form" id="add-wish-form">
           <div class="wish-form__field">
             <label for="wish-name" class="wish-form__label">Назва</label>
             <input 
             type="text" 
             id="wish-name" 
-            name="wish-name" 
+            name="name" 
             class="wish-form__input"
             placeholder="Введіть назву бажання" 
             required>
@@ -36,10 +36,11 @@
             <input 
             type="number" 
             id="wish-price" 
-            name="wish-price" 
+            name="price" 
             class="wish-form__input"
             placeholder="Введіть ціну бажання"
             inputmode="decimal" 
+            min = "0"
             step="0.01"
             required>
           </div>
@@ -48,7 +49,7 @@
             <input 
             type="file" 
             id="wish-img" 
-            name="wish-img" 
+            name="img" 
             class="wish-form__input-img">
           </div>
           <fieldset class="wish-form__fieldset">
@@ -57,8 +58,8 @@
               <input 
               type="radio" 
               id="wish-first-priority" 
-              name="wish-priority" 
-              value="1"
+              name="priority" 
+              value="high"
               class="wish-form__radio">
               <label for="wish-first-priority" class="wish-form__radio-label">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
@@ -68,8 +69,8 @@
               <input 
               type="radio" 
               id="wish-second-priority" 
-              name="wish-priority" 
-              value="2"
+              name="priority" 
+              value="medium"
               class="wish-form__radio">
               <label for="wish-second-priority" class="wish-form__radio-label">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.4,16.4,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65A8,8,0,0,0,128,181.1V32c.24,0,.27.08.35.26L153,91.86a8,8,0,0,0,6.75,4.92l63.91,5.16c.16,0,.25,0,.34.29S224,102.63,223.84,102.73Z"></path></svg>
@@ -79,8 +80,8 @@
               <input 
               type="radio" 
               id="wish-third-priority" 
-              name="wish-priority" 
-              value="3"
+              name="priority" 
+              value="low"
               class="wish-form__radio">
               <label for="wish-third-priority" class="wish-form__radio-label">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg>
@@ -99,63 +100,30 @@
         <h2 class="section-title">Мої бажання</h2>
         <div class="wish-grid" id="wishlist">
           <article class="wish-card wish-card--high">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-              <div class="wish-card__content">
-                <h3 class="wish-card__name">Бажання 1</h3>
-                <p class="wish-card__price">1000</p>
-              </div>
-          </article>
-          <article class="wish-card wish-card--middle">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-              <div class="wish-card__content">
-                <h3 class="wish-card__name">Бажання 1</h3>
-                <p class="wish-card__price">1000</p>
-              </div>
-          </article>
-          <article class="wish-card wish-card--low">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-              <div class="wish-card__content">
-                <h3 class="wish-card__name">Бажання 1</h3>
-                <p class="wish-card__price">1000</p>
-              </div>
-          </article>
-          <article class="wish-card wish-card--bought wish-card--middle">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <img class="wish-card__img" src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання">
             <div class="wish-card__content">
-              <h3 class="wish-card__name">Бажання 2</h3>
-              <p class="wish-card__price">20</p>
+              <h3 class="wish-card__name">Бажання 1</h3>
+              <p class="wish-card__price">1000</p>
             </div>
-          </article>
-          <article class="wish-card wish-card--bought wish-card--high">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-            <div class="wish-card__content">
-              <h3 class="wish-card__name">Бажання 2</h3>
-              <p class="wish-card__price">20</p>
-            </div>
-          </article>
-          <article class="wish-card wish-card--bought wish-card--low">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-            <div class="wish-card__content">
-              <h3 class="wish-card__name">Бажання 2</h3>
-              <p class="wish-card__price">20</p>
+            <div class="wish-card__action">
+              <button type="button" class="wish-card__action-btn" aria-label="Управління карткою">
+                <svg class="wish-card__action-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z"></path></svg>
+              </button>
+              <div class="wish-card__dropdown hidden">
+                <div class="wish-card__dropdown-item">
+                  <label>Пріоритет:
+                    <select class="wish-card__priority-select">
+                      <option value="high">Високий</option>
+                      <option value="medium">Середній</option>
+                      <option value="low">Низький</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
             </div>
           </article>
           <article class="wish-card wish-card--bought">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-            <div class="wish-card__content">
-              <h3 class="wish-card__name">Бажання 2</h3>
-              <p class="wish-card__price">20</p>
-            </div>
-          </article>
-          <article class="wish-card wish-card--bought">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
-            <div class="wish-card__content">
-              <h3 class="wish-card__name">Бажання 2</h3>
-              <p class="wish-card__price">20</p>
-            </div>
-          </article>
-          <article class="wish-card wish-card--bought">
-            <img src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання" class="wish-card__img">
+            <img class="wish-card__img" src="https://myplay.ua/tmp/cache/images/9b/309/402346new-1jpg-1000x1000-f.webp" alt="Фото бажання">
             <div class="wish-card__content">
               <h3 class="wish-card__name">Бажання 2</h3>
               <p class="wish-card__price">20</p>

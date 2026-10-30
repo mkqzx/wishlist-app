@@ -38,6 +38,10 @@ body {
   min-height: 100vh;
 }
 
+.hidden {
+  display: none;
+}
+
 .page-header {
   padding: 14px;
   background: transparent;
@@ -196,7 +200,8 @@ body {
   align-self: center;
 }
 
-.wish-form__submit, .wish-form__submit svg, .wish-form__input-img::file-selector-button, .wish-form__input {
+.wish-form__submit, .wish-form__submit svg, .wish-form__input-img::file-selector-button, 
+.wish-form__input, .wish-card__dropdown-item select {
   transition: all 0.3s ease;
 }
 
@@ -219,6 +224,7 @@ body {
 .wish-card {
   background: var(--card-bg);
   padding: 14px;
+  padding-top: 28px;
   max-width: 350px;
   border: 1px solid var(--secondary-color);
   border-radius: 10px;
@@ -228,7 +234,7 @@ body {
   position: relative;
 }
 
-.wish-card--high::before , .wish-card--middle::before , .wish-card--low::before {
+.wish-card--high::before , .wish-card--medium::before , .wish-card--low::before {
   position: absolute;
   z-index: 2;
   right: 0px;
@@ -246,7 +252,7 @@ body {
   background: #f4b9b9;
 }
 
-.wish-card--middle::before {
+.wish-card--medium::before {
   content: "Середній";
   background: #f7d7aa;
 }
@@ -261,6 +267,58 @@ body {
   height: auto;
   object-fit: cover;
   border-radius: 4px;  
+}
+
+.wish-card__action {
+  position: absolute;
+  z-index: 3;
+  top: calc((28px - 24px) / 2);
+  left: 14px;
+}
+
+.wish-card__action-svg {
+  width: 24px;
+  height: 24px;
+  color: black;
+}
+
+.wish-card__dropdown {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  z-index: 10;
+  padding: 4px;
+  background-color: var(--primary-color);
+  border: var(--accent-color) 1px solid;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.wish-card__dropdown-item label {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.wish-card__dropdown-item select {
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  padding: 2px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background-color: #ffffff; 
+  color: #757575; 
+}
+
+.wish-card__dropdown-item select:hover {
+  border: 1px solid var(--accent-color);
+}
+
+.wish-card__dropdown-item select:focus {
+  outline: none;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
 }
 
 .wish-card__content {
@@ -312,6 +370,10 @@ body {
 .total-amount__num {
   font-size: 1.4rem;
 }
+
+.total-amount__num::after {
+  font-size: 1.2rem;
+} 
 
 .page-footer {
   font-size: 0.9rem;
