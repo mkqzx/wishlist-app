@@ -32,6 +32,9 @@ const wishes = [
 const listContainer = document.querySelector("#wishlist")
 listContainer.querySelectorAll(".wish-card").forEach(card => card.remove())
 const URL = "https://jsonplaceholder.typicode.com/todos?userId=2"
+const form = document.querySelector("#add-wish-form")
+const wishFormSubmit = document.querySelector("#wish-form-submit")
+
 
 // функція для завантаження даних із зовнішнього API 
 async function loadWishes() {
@@ -39,6 +42,8 @@ async function loadWishes() {
     <div class="loading-message">
       <p>Завантаження...</p>
     </div>`
+  
+  wishFormSubmit.disabled = true
 
   try {
     const response = await fetch(URL)
@@ -70,6 +75,7 @@ async function loadWishes() {
     </div>`
 
   } finally {
+    wishFormSubmit.disabled = false
     console.log("Обробка завантаження API завершена.")
   }
 }
@@ -83,8 +89,6 @@ listContainer.addEventListener("click", event => {
     loadWishes()
   }
 })
-
-const form = document.querySelector("#add-wish-form")
 
 // обробник відправки форми: зупиняє перезавантаження сторінки, 
 // збирає валідні дані з усіх полів у новий об'єкт та викликає рендер
