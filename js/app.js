@@ -45,11 +45,11 @@ async function loadWishes() {
   
   wishFormSubmit.disabled = true
 
-  try {
+    try {
     const response = await fetch(URL)
     
     if (!response.ok) {
-      throw new Error(`Виникла помилка. Код помилки - ${response.status}`)
+      throw new Error(`Помилка сервера: ${response.status}`)
     }
     const data = await response.json()
     console.log(data)
@@ -65,15 +65,21 @@ async function loadWishes() {
     renderWishes(wishes)
 
   } catch (error) {
-    console.error(error)
+    let messageText = "Помилка: мережевий збій - Список бажань недоступний офлайн."
+
+    if (error.message.includes("Помилка сервера")) {
+      messageText = error.message
+    }
+
     listContainer.innerHTML = `
     <div class="error-message">
-      <p>Виникла помилка! Список бажань недоступний офлайн.</p>
+      <p>${messageText}</p>
       <button type="button" class="reload-btn">
-        <p>Оновити сторінку</p>
+        <p>Оновити список</p>
       </button>
     </div>`
-
+    console.error(error)
+    
   } finally {
     wishFormSubmit.disabled = false
     console.log("Обробка завантаження API завершена.")
