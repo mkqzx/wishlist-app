@@ -2,35 +2,87 @@ console.log("app.js підключено")
 
 // масив обʼєктів з даними про бажання (назва, ціна, пріоритет)
 const wishes = [
-  {
-    name: "Книга",
-    price: 600,
-    priority: "low"
-  },
-  {
-    name: "iPhone 18 Pro",
-    price: 80_000,
-    priority: "high"
-  },
-  {
-    name: "Гра в Steam",
-    price: 230,
-    priority: "low"
-  },
-  {
-    name: "Машина Audi A6",
-    price: 3_500_000,
-    priority: "high"
-  },
-  {
-    name: "Сет суші",
-    price: 1000,
-    priority: "medium"
-  }
+  // {
+  //   name: "Книга",
+  //   price: 600,
+  //   priority: "low"
+  // },
+  // {
+  //   name: "iPhone 18 Pro",
+  //   price: 80_000,
+  //   priority: "high"
+  // },
+  // {
+  //   name: "Гра в Steam",
+  //   price: 230,
+  //   priority: "low"
+  // },
+  // {
+  //   name: "Машина Audi A6",
+  //   price: 3_500_000,
+  //   priority: "high"
+  // },
+  // {
+  //   name: "Сет суші",
+  //   price: 1000,
+  //   priority: "medium"
+  // }
 ]
 
 const listContainer = document.querySelector("#wishlist")
 listContainer.querySelectorAll(".wish-card").forEach(card => card.remove())
+const URL = "https://jsonplaceholder.typicode.com/todos?userId=2"
+
+// функція для завантаження даних із зовнішнього API 
+async function loadWishes() {
+  listContainer.innerHTML = `
+    <div class="loading-message">
+      <p>Завантаження...</p>
+    </div>`
+
+  try {
+    const response = await fetch(URL)
+    
+    if (!response.ok) {
+      throw new Error(`Виникла помилка. Код помилки - ${response.status}`)
+    }
+    const data = await response.json()
+    console.log(data)
+    const adaptedWishes = data.map(item => {
+      return {
+        name: item.title,
+        price: Math.floor(Math.random() * 5000) + 100,
+        isBought: item.completed
+      }
+    })
+  
+    wishes.push(...adaptedWishes)
+    renderWishes(wishes)
+
+  } catch (error) {
+    console.error(error)
+    listContainer.innerHTML = `
+    <div class="error-message">
+      <p>Виникла помилка! Список бажань недоступний офлайн.</p>
+      <button type="button" class="reload-btn">
+        <p>Оновити сторінку</p>
+      </button>
+    </div>`
+
+  } finally {
+    console.log("Обробка завантаження API завершена.")
+  }
+}
+
+loadWishes()
+
+// обробка події для кнопки повторного завантаження сторінки
+listContainer.addEventListener("click", event => {
+  const reloadBtn = event.target.closest(".reload-btn")
+  if (reloadBtn) {
+    loadWishes()
+  }
+})
 
 const form = document.querySelector("#add-wish-form")
 
@@ -110,6 +162,19 @@ listContainer.addEventListener("change", event => {
   }
 })
 
+listContainer.addEventListener("click", event => {
+  const dropdownBtn = event.target.closest(".wish-card__dropdown-btn")
+
+  if (dropdownBtn) {
+    const dataDropdownBtn = dropdownBtn.dataset.action
+    
+    if (dataDropdownBtn === "complete") {
+      const wishCard = dropdownBtn.closest(".wish-card")
+      wishCard.classList.toggle("wish-card--bought")
+    }
+  }
+})
+
 // функція рендеру: перебирає масив даних, динамічно створює HTML-картки з відповідними 
 // класами та атрибутами пріоритету, після чого додає їх у DOM-контейнер сторінки
 const renderWishes = (wishesArr) => {
@@ -140,6 +205,10 @@ const renderWishes = (wishesArr) => {
       cardItem.classList.add("wish-card--low")
     }
 
+    if (wish.isBought) {
+      cardItem.classList.add("wish-card--bought")
+    }
+
     cardItem.innerHTML = `
       <img class="wish-card__img" src="https://ngp-ua.info/wp-content/uploads/2021/04/11-26.jpg" alt="Фото ${wish.name}">
       <div class="wish-card__content">
@@ -160,15 +229,18 @@ const renderWishes = (wishesArr) => {
               </select>
             </label>
           </div>
+          <div class="wish-card__dropdown-item">
+            <button type="button" class="wish-card__dropdown-btn" data-action="complete">
+              Позначити як виконане
+            </button>
+          </div>
         </div>
       </div>`
 
-    listContainer.append(cardItem)
+    listContainer.prepend(cardItem)
     document.querySelector(".total-amount__num").textContent = calcTotalCost(wishes)
   })
 }
-
-renderWishes(wishes)
 
 function calcTotalCost(wishesArr) {
   let totalCost = 0 
