@@ -101,38 +101,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-.wish-form__label {
-  margin-bottom: 3px;
-}
-
 .wish-form__fieldset {
   margin-bottom: 8px;
   border: none;
-}
-
-.wish-form__legend {
-  margin-bottom: 3px;
-}
-
-.wish-form__radio {
-  all: unset;
-}
-
-.wish-form__radio:checked + .wish-form__radio-label {
-  opacity: 100%;
-  font-weight: bold;
-}
-
-.wish-form__radio-label {
-  display: flex;
-  gap: 4px;
-  opacity: 60%;
-  margin-bottom: 2px;
-}
-
-.wish-form__radio-label svg {
-  align-self: center;
 }
 
 .wish-form__input { 
@@ -201,7 +172,7 @@ body {
 }
 
 .wish-form__submit, .wish-form__submit svg, .wish-form__input-img::file-selector-button, 
-.wish-form__input, .wish-card__dropdown-item select {
+.wish-form__input, .wish-card__priority-select, .wish-form__priority-select {
   transition: all 0.3s ease;
 }
 
@@ -294,14 +265,14 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.wish-card__dropdown-item label {
+.wish-card__dropdown-item label, .wish-form__fieldset {
   display: flex;
   flex-direction: row;
   gap: 4px;
   align-items: center;
 }
 
-.wish-card__dropdown-item select {
+.wish-card__priority-select , .wish-form__priority-select {
   border: 1px solid var(--secondary-color);
   border-radius: 4px;
   padding: 2px;
@@ -311,14 +282,26 @@ body {
   color: #757575; 
 }
 
-.wish-card__dropdown-item select:hover {
+.wish-form__priority-select {
+  border: 2px solid var(--secondary-color);
+}
+
+.wish-card__priority-select:hover {
   border: 1px solid var(--accent-color);
 }
 
-.wish-card__dropdown-item select:focus {
+.wish-form__priority-select:hover {
+  border: 2px solid var(--accent-color);
+}
+
+.wish-card__priority-select:focus, .wish-form__priority-select:focus {
   outline: none;
   border: 1px solid var(--accent-color);
   border-radius: 4px;
+}
+
+.wish-form__priority-select:focus {
+  border: 2px solid var(--accent-color);
 }
 
 .wish-card__content {

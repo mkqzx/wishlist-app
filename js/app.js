@@ -52,7 +52,7 @@ form.addEventListener("submit", event => {
       continue
     }
 
-    if (element.type === "radio" && !element.checked) {
+    if (element.type === "select-one" && element.value === "") {
       continue
     }
 
